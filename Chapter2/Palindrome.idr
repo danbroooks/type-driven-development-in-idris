@@ -1,3 +1,6 @@
+module Chapter2.Palindrome
+
+export
 palindrome : Nat -> String -> Bool
 palindrome min str =
   if length str > min
