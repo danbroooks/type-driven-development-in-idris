@@ -41,7 +41,3 @@ myMap f (x :: xs) = f x :: myMap f xs
 total myVectMap : (a -> b) -> Vect n a -> Vect n b
 myVectMap f [] = []
 myVectMap f (x :: xs) = f x :: myVectMap f xs
-
-total transposeMat : Vect m (Vect n elem) -> Vect n (Vect m elem)
-transposeMat [] = replicate _ []
-transposeMat (x :: xs) = zipWith (::) x (transposeMat xs)
