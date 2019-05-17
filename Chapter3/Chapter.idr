@@ -42,13 +42,6 @@ total myVectMap : (a -> b) -> Vect n a -> Vect n b
 myVectMap f [] = []
 myVectMap f (x :: xs) = f x :: myVectMap f xs
 
-total createEmpties : Vect n (Vect 0 elem)
-createEmpties = replicate _ []
-
-total prependVect : (x : Vect n elem) -> (xs : Vect n (Vect len elem)) -> Vect n (Vect (S len) elem)
-prependVect [] [] = []
-prependVect (x :: xs) (y :: ys) = (x :: y) :: prependVect xs ys
-
 total transposeMat : Vect m (Vect n elem) -> Vect n (Vect m elem)
-transposeMat [] = createEmpties
-transposeMat (x :: xs) = prependVect x (transposeMat xs)
+transposeMat [] = replicate _ []
+transposeMat (x :: xs) = zipWith (::) x (transposeMat xs)
